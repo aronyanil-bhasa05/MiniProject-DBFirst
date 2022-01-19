@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc445ae2f5634285b8b6cf9a01b4d53b" Name="Diagram1">
+        <EntityTypeShape EntityType="LMSProjectModel.AdminRegistration" Width="1.5" PointX="1" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSProjectModel.ChapterMaster" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSProjectModel.LearnerProfile" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSProjectModel.SubjectMaster" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSProjectModel.TopicMaster" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LMSProjectModel.ViewStatus" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="LMSProjectModel.FK_ChapterMaster_ChapterMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSProjectModel.FK_TopicMaster_ChapterMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSProjectModel.FK_ViewStatus_ChapterMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSProjectModel.FK_ViewStatus_LearnerProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSProjectModel.FK_TopicMaster_SubjectMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSProjectModel.FK_ViewStatus_SubjectMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="LMSProjectModel.FK_ViewStatus_TopicMaster" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

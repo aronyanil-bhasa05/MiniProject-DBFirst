@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LMSProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminRegistration">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChapterMaster">
+    <Key>
+      <PropertyRef Name="ChapterName" />
+    </Key>
+    <Property Name="ChapterName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubjectID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="SubjectMaster" Relationship="Self.FK_ChapterMaster_ChapterMaster" FromRole="ChapterMaster" ToRole="SubjectMaster" />
+    <NavigationProperty Name="TopicMasters" Relationship="Self.FK_TopicMaster_ChapterMaster" FromRole="ChapterMaster" ToRole="TopicMaster" />
+    <NavigationProperty Name="ViewStatus" Relationship="Self.FK_ViewStatus_ChapterMaster" FromRole="ChapterMaster" ToRole="ViewStatus" />
+  </EntityType>
+  <EntityType Name="LearnerProfile">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Dob" Type="DateTime" Precision="3" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ViewStatus" Relationship="Self.FK_ViewStatus_LearnerProfile" FromRole="LearnerProfile" ToRole="ViewStatus" />
+  </EntityType>
+  <EntityType Name="SubjectMaster">
+    <Key>
+      <PropertyRef Name="SubjectID" />
+    </Key>
+    <Property Name="SubjectID" Type="Int32" Nullable="false" />
+    <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Domain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ChapterMasters" Relationship="Self.FK_ChapterMaster_ChapterMaster" FromRole="SubjectMaster" ToRole="ChapterMaster" />
+    <NavigationProperty Name="TopicMasters" Relationship="Self.FK_TopicMaster_SubjectMaster" FromRole="SubjectMaster" ToRole="TopicMaster" />
+    <NavigationProperty Name="ViewStatus" Relationship="Self.FK_ViewStatus_SubjectMaster" FromRole="SubjectMaster" ToRole="ViewStatus" />
+  </EntityType>
+  <EntityType Name="TopicMaster">
+    <Key>
+      <PropertyRef Name="TopicName" />
+    </Key>
+    <Property Name="TopicName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubjectID" Type="Int32" Nullable="false" />
+    <Property Name="ChapterName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ContentURL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ChapterMaster" Relationship="Self.FK_TopicMaster_ChapterMaster" FromRole="TopicMaster" ToRole="ChapterMaster" />
+    <NavigationProperty Name="SubjectMaster" Relationship="Self.FK_TopicMaster_SubjectMaster" FromRole="TopicMaster" ToRole="SubjectMaster" />
+    <NavigationProperty Name="ViewStatus" Relationship="Self.FK_ViewStatus_TopicMaster" FromRole="TopicMaster" ToRole="ViewStatus" />
+  </EntityType>
+  <EntityType Name="ViewStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="LearnerEmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubjectID" Type="Int32" Nullable="false" />
+    <Property Name="ChapterName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TopicName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ViewTime" Type="DateTime" Precision="3" />
+    <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ChapterMaster" Relationship="Self.FK_ViewStatus_ChapterMaster" FromRole="ViewStatus" ToRole="ChapterMaster" />
+    <NavigationProperty Name="LearnerProfile" Relationship="Self.FK_ViewStatus_LearnerProfile" FromRole="ViewStatus" ToRole="LearnerProfile" />
+    <NavigationProperty Name="SubjectMaster" Relationship="Self.FK_ViewStatus_SubjectMaster" FromRole="ViewStatus" ToRole="SubjectMaster" />
+    <NavigationProperty Name="TopicMaster" Relationship="Self.FK_ViewStatus_TopicMaster" FromRole="ViewStatus" ToRole="TopicMaster" />
+  </EntityType>
+  <Association Name="FK_ChapterMaster_ChapterMaster">
+    <End Role="SubjectMaster" Type="Self.SubjectMaster" Multiplicity="1" />
+    <End Role="ChapterMaster" Type="Self.ChapterMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectMaster">
+        <PropertyRef Name="SubjectID" />
+      </Principal>
+      <Dependent Role="ChapterMaster">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TopicMaster_ChapterMaster">
+    <End Role="ChapterMaster" Type="Self.ChapterMaster" Multiplicity="1" />
+    <End Role="TopicMaster" Type="Self.TopicMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChapterMaster">
+        <PropertyRef Name="ChapterName" />
+      </Principal>
+      <Dependent Role="TopicMaster">
+        <PropertyRef Name="ChapterName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewStatus_ChapterMaster">
+    <End Role="ChapterMaster" Type="Self.ChapterMaster" Multiplicity="1" />
+    <End Role="ViewStatus" Type="LMSProjectModel.ViewStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChapterMaster">
+        <PropertyRef Name="ChapterName" />
+      </Principal>
+      <Dependent Role="ViewStatus">
+        <PropertyRef Name="ChapterName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewStatus_LearnerProfile">
+    <End Role="LearnerProfile" Type="Self.LearnerProfile" Multiplicity="1" />
+    <End Role="ViewStatus" Type="LMSProjectModel.ViewStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LearnerProfile">
+        <PropertyRef Name="Email" />
+      </Principal>
+      <Dependent Role="ViewStatus">
+        <PropertyRef Name="LearnerEmailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TopicMaster_SubjectMaster">
+    <End Role="SubjectMaster" Type="Self.SubjectMaster" Multiplicity="1" />
+    <End Role="TopicMaster" Type="Self.TopicMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectMaster">
+        <PropertyRef Name="SubjectID" />
+      </Principal>
+      <Dependent Role="TopicMaster">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewStatus_SubjectMaster">
+    <End Role="SubjectMaster" Type="Self.SubjectMaster" Multiplicity="1" />
+    <End Role="ViewStatus" Type="LMSProjectModel.ViewStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectMaster">
+        <PropertyRef Name="SubjectID" />
+      </Principal>
+      <Dependent Role="ViewStatus">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ViewStatus_TopicMaster">
+    <End Role="TopicMaster" Type="Self.TopicMaster" Multiplicity="1" />
+    <End Role="ViewStatus" Type="LMSProjectModel.ViewStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TopicMaster">
+        <PropertyRef Name="TopicName" />
+      </Principal>
+      <Dependent Role="ViewStatus">
+        <PropertyRef Name="TopicName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminRegistrations" EntityType="Self.AdminRegistration" />
+    <EntitySet Name="ChapterMasters" EntityType="Self.ChapterMaster" />
+    <EntitySet Name="LearnerProfiles" EntityType="Self.LearnerProfile" />
+    <EntitySet Name="SubjectMasters" EntityType="Self.SubjectMaster" />
+    <EntitySet Name="TopicMasters" EntityType="Self.TopicMaster" />
+    <EntitySet Name="ViewStatus1" EntityType="LMSProjectModel.ViewStatus" />
+    <AssociationSet Name="FK_ChapterMaster_ChapterMaster" Association="Self.FK_ChapterMaster_ChapterMaster">
+      <End Role="SubjectMaster" EntitySet="SubjectMasters" />
+      <End Role="ChapterMaster" EntitySet="ChapterMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TopicMaster_ChapterMaster" Association="Self.FK_TopicMaster_ChapterMaster">
+      <End Role="ChapterMaster" EntitySet="ChapterMasters" />
+      <End Role="TopicMaster" EntitySet="TopicMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewStatus_ChapterMaster" Association="Self.FK_ViewStatus_ChapterMaster">
+      <End Role="ChapterMaster" EntitySet="ChapterMasters" />
+      <End Role="ViewStatus" EntitySet="ViewStatus1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewStatus_LearnerProfile" Association="Self.FK_ViewStatus_LearnerProfile">
+      <End Role="LearnerProfile" EntitySet="LearnerProfiles" />
+      <End Role="ViewStatus" EntitySet="ViewStatus1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TopicMaster_SubjectMaster" Association="Self.FK_TopicMaster_SubjectMaster">
+      <End Role="SubjectMaster" EntitySet="SubjectMasters" />
+      <End Role="TopicMaster" EntitySet="TopicMasters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewStatus_SubjectMaster" Association="Self.FK_ViewStatus_SubjectMaster">
+      <End Role="SubjectMaster" EntitySet="SubjectMasters" />
+      <End Role="ViewStatus" EntitySet="ViewStatus1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ViewStatus_TopicMaster" Association="Self.FK_ViewStatus_TopicMaster">
+      <End Role="TopicMaster" EntitySet="TopicMasters" />
+      <End Role="ViewStatus" EntitySet="ViewStatus1" />
+    </AssociationSet>
+    <FunctionImport Name="ADMINREG_ALL" EntitySet="AdminRegistrations" ReturnType="Collection(LMSProjectModel.AdminRegistration)" />
+    <FunctionImport Name="ADMINREG_DELETE">
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ADMINREG_GETUSER" ReturnType="Collection(LMSProjectModel.ADMINREG_GETUSER_Result)">
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ADMINREG_INSERT">
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="FNAME" Mode="In" Type="String" />
+      <Parameter Name="LNAME" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ADMINREG_UPDATE">
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="FNAME" Mode="In" Type="String" />
+      <Parameter Name="LNAME" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CHAPTERMASTER_ALL" EntitySet="ChapterMasters" ReturnType="Collection(LMSProjectModel.ChapterMaster)" />
+    <FunctionImport Name="CHAPTERMASTER_DELETE">
+      <Parameter Name="CNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CHAPTERMASTER_INSERT">
+      <Parameter Name="CNAME" Mode="In" Type="String" />
+      <Parameter Name="SUBID" Mode="In" Type="Int32" />
+      <Parameter Name="LASTUP" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="CHAPTERMASTER_UPDATE">
+      <Parameter Name="CNAME" Mode="In" Type="String" />
+      <Parameter Name="SUBID" Mode="In" Type="Int32" />
+      <Parameter Name="LASTUP" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="LEARNPROF_ALL" EntitySet="LearnerProfiles" ReturnType="Collection(LMSProjectModel.LearnerProfile)" />
+    <FunctionImport Name="LEARNPROF_DELETE">
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LEARNPROF_INSERT">
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="FNAME" Mode="In" Type="String" />
+      <Parameter Name="LNAME" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="GENDER" Mode="In" Type="String" />
+      <Parameter Name="REM" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+      <Parameter Name="STATUS" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LEARNPROF_UPDATE">
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="FNAME" Mode="In" Type="String" />
+      <Parameter Name="LNAME" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="GENDER" Mode="In" Type="String" />
+      <Parameter Name="REM" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+      <Parameter Name="STATUS" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SUBMASTER_ALL" EntitySet="SubjectMasters" ReturnType="Collection(LMSProjectModel.SubjectMaster)" />
+    <FunctionImport Name="SUBMASTER_DELETE">
+      <Parameter Name="SUBID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SUBMASTER_INSERT">
+      <Parameter Name="SUBID" Mode="In" Type="Int32" />
+      <Parameter Name="SUBNAME" Mode="In" Type="String" />
+      <Parameter Name="LASTUP" Mode="In" Type="DateTime" />
+      <Parameter Name="DOMAIN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SUBMASTER_UPDATE">
+      <Parameter Name="SUBID" Mode="In" Type="Int32" />
+      <Parameter Name="SUBNAME" Mode="In" Type="String" />
+      <Parameter Name="LASTUP" Mode="In" Type="DateTime" />
+      <Parameter Name="DOMAIN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="TOPICMASTER_ALL" EntitySet="TopicMasters" ReturnType="Collection(LMSProjectModel.TopicMaster)" />
+    <FunctionImport Name="TOPICMASTER_DELETE">
+      <Parameter Name="TNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="TOPICMASTER_INSERT">
+      <Parameter Name="TNAME" Mode="In" Type="String" />
+      <Parameter Name="SUBID" Mode="In" Type="Int32" />
+      <Parameter Name="CNAME" Mode="In" Type="String" />
+      <Parameter Name="LASTUP" Mode="In" Type="DateTime" />
+      <Parameter Name="CONTURL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="TOPICMASTER_UPDATE">
+      <Parameter Name="TNAME" Mode="In" Type="String" />
+      <Parameter Name="SUBID" Mode="In" Type="Int32" />
+      <Parameter Name="CNAME" Mode="In" Type="String" />
+      <Parameter Name="LASTUP" Mode="In" Type="DateTime" />
+      <Parameter Name="CONTURL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="VIEWSTATUS_ALL" EntitySet="ViewStatus1" ReturnType="Collection(LMSProjectModel.ViewStatus)" />
+    <FunctionImport Name="VIEWSTATUS_DELETE">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="VIEWSTATUS_INSERT">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="SUBID" Mode="In" Type="Int32" />
+      <Parameter Name="CNAME" Mode="In" Type="String" />
+      <Parameter Name="TNAME" Mode="In" Type="String" />
+      <Parameter Name="VTIME" Mode="In" Type="DateTime" />
+      <Parameter Name="COMMENT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="VIEWSTATUS_UPDATE">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="SUBID" Mode="In" Type="Int32" />
+      <Parameter Name="CNAME" Mode="In" Type="String" />
+      <Parameter Name="TNAME" Mode="In" Type="String" />
+      <Parameter Name="VTIME" Mode="In" Type="DateTime" />
+      <Parameter Name="COMMENT" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="ADMINREG_ALL_Result">
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="ADMINREG_GETUSER_Result">
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="CHAPTERMASTER_ALL_Result">
+    <Property Type="String" Name="ChapterName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="SubjectID" Nullable="false" />
+    <Property Type="DateTime" Name="LastUpdatedOn" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="LEARNPROF_ALL_Result">
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Dob" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Remark" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="SUBMASTER_ALL_Result">
+    <Property Type="Int32" Name="SubjectID" Nullable="false" />
+    <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="LastUpdatedOn" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Domain" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="TOPICMASTER_ALL_Result">
+    <Property Type="String" Name="TopicName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="SubjectID" Nullable="false" />
+    <Property Type="String" Name="ChapterName" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="LastUpdatedOn" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ContentURL" Nullable="false" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="VIEWSTATUS_ALL_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="LearnerEmailID" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="SubjectID" Nullable="false" />
+    <Property Type="String" Name="ChapterName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TopicName" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="ViewTime" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Comment" Nullable="true" MaxLength="200" />
+  </ComplexType>
+</Schema>

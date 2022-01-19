@@ -1,0 +1,12 @@
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\bin\Debug\DAL.dll.config
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\bin\Debug\DAL.dll
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\bin\Debug\DAL.pdb
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\bin\Debug\EntityFramework.dll
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\bin\Debug\EntityFramework.xml
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\obj\Debug\DAL.dll
+D:\Nordic\EF\Mini Project\TEST\LMS\DAL\obj\Debug\DAL.pdb

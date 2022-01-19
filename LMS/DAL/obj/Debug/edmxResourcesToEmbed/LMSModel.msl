@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LMSProjectModelStoreContainer" CdmEntityContainer="LMSEntities">
+    <EntitySetMapping Name="AdminRegistrations">
+      <EntityTypeMapping TypeName="LMSProjectModel.AdminRegistration">
+        <MappingFragment StoreEntitySet="AdminRegistration">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChapterMasters">
+      <EntityTypeMapping TypeName="LMSProjectModel.ChapterMaster">
+        <MappingFragment StoreEntitySet="ChapterMaster">
+          <ScalarProperty Name="ChapterName" ColumnName="ChapterName" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LearnerProfiles">
+      <EntityTypeMapping TypeName="LMSProjectModel.LearnerProfile">
+        <MappingFragment StoreEntitySet="LearnerProfile">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Dob" ColumnName="Dob" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectMasters">
+      <EntityTypeMapping TypeName="LMSProjectModel.SubjectMaster">
+        <MappingFragment StoreEntitySet="SubjectMaster">
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopicMasters">
+      <EntityTypeMapping TypeName="LMSProjectModel.TopicMaster">
+        <MappingFragment StoreEntitySet="TopicMaster">
+          <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="ChapterName" ColumnName="ChapterName" />
+          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+          <ScalarProperty Name="ContentURL" ColumnName="ContentURL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewStatus1">
+      <EntityTypeMapping TypeName="LMSProjectModel.ViewStatus">
+        <MappingFragment StoreEntitySet="ViewStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LearnerEmailID" ColumnName="LearnerEmailID" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="ChapterName" ColumnName="ChapterName" />
+          <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+          <ScalarProperty Name="ViewTime" ColumnName="ViewTime" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ADMINREG_ALL" FunctionName="LMSProjectModel.Store.ADMINREG_ALL" />
+    <FunctionImportMapping FunctionImportName="ADMINREG_DELETE" FunctionName="LMSProjectModel.Store.ADMINREG_DELETE" />
+    <FunctionImportMapping FunctionImportName="ADMINREG_GETUSER" FunctionName="LMSProjectModel.Store.ADMINREG_GETUSER">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LMSProjectModel.ADMINREG_GETUSER_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ADMINREG_INSERT" FunctionName="LMSProjectModel.Store.ADMINREG_INSERT" />
+    <FunctionImportMapping FunctionImportName="ADMINREG_UPDATE" FunctionName="LMSProjectModel.Store.ADMINREG_UPDATE" />
+    <FunctionImportMapping FunctionImportName="CHAPTERMASTER_ALL" FunctionName="LMSProjectModel.Store.CHAPTERMASTER_ALL" />
+    <FunctionImportMapping FunctionImportName="CHAPTERMASTER_DELETE" FunctionName="LMSProjectModel.Store.CHAPTERMASTER_DELETE" />
+    <FunctionImportMapping FunctionImportName="CHAPTERMASTER_INSERT" FunctionName="LMSProjectModel.Store.CHAPTERMASTER_INSERT" />
+    <FunctionImportMapping FunctionImportName="CHAPTERMASTER_UPDATE" FunctionName="LMSProjectModel.Store.CHAPTERMASTER_UPDATE" />
+    <FunctionImportMapping FunctionImportName="LEARNPROF_ALL" FunctionName="LMSProjectModel.Store.LEARNPROF_ALL" />
+    <FunctionImportMapping FunctionImportName="LEARNPROF_DELETE" FunctionName="LMSProjectModel.Store.LEARNPROF_DELETE" />
+    <FunctionImportMapping FunctionImportName="LEARNPROF_INSERT" FunctionName="LMSProjectModel.Store.LEARNPROF_INSERT" />
+    <FunctionImportMapping FunctionImportName="LEARNPROF_UPDATE" FunctionName="LMSProjectModel.Store.LEARNPROF_UPDATE" />
+    <FunctionImportMapping FunctionImportName="SUBMASTER_ALL" FunctionName="LMSProjectModel.Store.SUBMASTER_ALL" />
+    <FunctionImportMapping FunctionImportName="SUBMASTER_DELETE" FunctionName="LMSProjectModel.Store.SUBMASTER_DELETE" />
+    <FunctionImportMapping FunctionImportName="SUBMASTER_INSERT" FunctionName="LMSProjectModel.Store.SUBMASTER_INSERT" />
+    <FunctionImportMapping FunctionImportName="SUBMASTER_UPDATE" FunctionName="LMSProjectModel.Store.SUBMASTER_UPDATE" />
+    <FunctionImportMapping FunctionImportName="TOPICMASTER_ALL" FunctionName="LMSProjectModel.Store.TOPICMASTER_ALL" />
+    <FunctionImportMapping FunctionImportName="TOPICMASTER_DELETE" FunctionName="LMSProjectModel.Store.TOPICMASTER_DELETE" />
+    <FunctionImportMapping FunctionImportName="TOPICMASTER_INSERT" FunctionName="LMSProjectModel.Store.TOPICMASTER_INSERT" />
+    <FunctionImportMapping FunctionImportName="TOPICMASTER_UPDATE" FunctionName="LMSProjectModel.Store.TOPICMASTER_UPDATE" />
+    <FunctionImportMapping FunctionImportName="VIEWSTATUS_ALL" FunctionName="LMSProjectModel.Store.VIEWSTATUS_ALL" />
+    <FunctionImportMapping FunctionImportName="VIEWSTATUS_DELETE" FunctionName="LMSProjectModel.Store.VIEWSTATUS_DELETE" />
+    <FunctionImportMapping FunctionImportName="VIEWSTATUS_INSERT" FunctionName="LMSProjectModel.Store.VIEWSTATUS_INSERT" />
+    <FunctionImportMapping FunctionImportName="VIEWSTATUS_UPDATE" FunctionName="LMSProjectModel.Store.VIEWSTATUS_UPDATE" />
+  </EntityContainerMapping>
+</Mapping>

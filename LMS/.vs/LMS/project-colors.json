@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4c1384b9-6230-4b85-a116-264a57aaed0b": {
+      "ProjectGuid": "4c1384b9-6230-4b85-a116-264a57aaed0b",
+      "DisplayName": "DAL",
+      "ColorIndex": 0
+    },
+    "d39d1c8e-1095-46e3-82e2-6ece54eb004d": {
+      "ProjectGuid": "d39d1c8e-1095-46e3-82e2-6ece54eb004d",
+      "DisplayName": "BLL",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

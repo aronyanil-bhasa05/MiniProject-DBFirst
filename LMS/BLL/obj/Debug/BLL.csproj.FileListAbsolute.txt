@@ -1,0 +1,12 @@
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\bin\Debug\BLL.dll
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\bin\Debug\BLL.pdb
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\bin\Debug\DAL.dll
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\bin\Debug\EntityFramework.dll
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\bin\Debug\DAL.pdb
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\bin\Debug\DAL.dll.config
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\bin\Debug\EntityFramework.xml
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\obj\Debug\BLL.dll
+D:\Nordic\EF\Mini Project\TEST\LMS\BLL\obj\Debug\BLL.pdb
